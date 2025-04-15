@@ -941,7 +941,7 @@ static void applyMulticopterEmergencyLandingController(timeUs_t currentTimeUs)
     rcCommand[PITCH] = 0;
 
     /* Altitude sensors gone haywire, attempt to land regardless */
-    if (posControl.flags.estAltStatus < EST_USABLE) {
+    if (posControl.flags.estAltStatus < EST_USABLE || navConfig()->general.hover_not_land) {
         if (failsafeConfig()->failsafe_procedure == FAILSAFE_PROCEDURE_DROP_IT) {
             rcCommand[THROTTLE] = getThrottleIdleValue();
             return;

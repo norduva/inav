@@ -852,7 +852,7 @@ groups:
         description: "Time in deciseconds to wait before turning off motors when failsafe is activated. 0 = No timeout. See [Failsafe documentation](Failsafe.md#failsafe_off_delay)."
         default_value: 200
         min: 0
-        max: 200
+        max: 2000
       - name: failsafe_throttle_low_delay
         description: "If failsafe activated when throttle is low for this much time - bypass failsafe and disarm, in 10th of seconds. 0 = No timeout"
         default_value: 0
@@ -2641,8 +2641,13 @@ groups:
         description: "Rate of descent UAV will try to maintain when doing emergency descent sequence [cm/s]"
         default_value: 500
         field: general.emerg_descent_rate
-        min: 100
+        min: 0
         max: 2000
+      - name: nav_hover_not_land
+        description: "Rate of descent UAV will try to maintain when doing emergency descent sequence [cm/s]"
+        default_value: OFF
+        field: general.hover_not_land
+        type: bool
       - name: nav_min_rth_distance
         description: "Minimum distance from homepoint when RTH full procedure will be activated [cm]. Below this distance, the mode will activate at the current location and the final phase is executed (loiter / land). Above this distance, the full procedure is activated, which may include initial climb and flying directly to the homepoint before entering the loiter / land phase."
         default_value: 500
